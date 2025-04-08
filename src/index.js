@@ -11,9 +11,9 @@
 export default {
 	async fetch(request, env, ctx) {
 	  const response = await fetch("https://api.ipify.org?format=json");
-	  const data = await response.json();
+	  const data = await response.text();
   
-	  return new Response(data.ip ?? "unknown", {
+	  return new Response(data ?? "unknown", {
 		headers: { "content-type": "text/plain" },
 	  });
 	},
